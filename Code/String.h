@@ -4,6 +4,7 @@
 
 class String
 {
+	///Simple string class, has constructors, destructors, static constants in the first section of public
 public:
 	String();
 	String(const char* _str);
@@ -13,6 +14,8 @@ public:
 	~String();
 	static const size_t notFound = SIZE_MAX;
 public:
+	///Public member functions 
+	/// 
 	size_t Length() const;
 	char& CharacterAt(size_t _index);
 	const char& CharacterAt(size_t _index) const;
@@ -35,16 +38,8 @@ public:
 	String& ReadFromConsole();
 	String& WriteToConsole();
 
-public:
-	bool operator==(const String& _other);
-	bool operator!=(const String& _other);
-
-	String& operator=(const String& _str);
-
-	char& operator[](size_t _index);
-	const char& operator[](size_t _index) const;
-
 private:
+	/// Private data members
 	char* data;
 	size_t size;
 
