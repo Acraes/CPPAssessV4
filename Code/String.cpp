@@ -325,3 +325,6 @@ String& String::WriteToConsole()
 ///Previously had some code here from when i was working on this a while ago i think, during the period of time when it hadn't been covered and i was looking for how to do this. 
 /// (Didn't use ChatGPT or anything like that, just a bunch of code from different sources, with some things changed here and there).
 /// Saw it and went, "Huh, that's weird." Deleted it and moved on to comment sections.
+
+///EDIT, Found some code in String.h which the previous code here was for, so i must have found some code from a while ago that would fit it.
+///ANYWAY, removed everything here and setup working stuff.
