@@ -180,28 +180,51 @@ String& String::Prepend(const String& _str)
     ///Prepends another string to the current string.
     ///Copies the characters from the appended string and then from the current string into the new memory.
     ///Updates the size and deallocates the old memory, assigning the new memory to 'data'.
-    char* temp = new char[size + _str.size + 1];
+    size_t newLength = size + _str.size;
+char* temp = new char[newLength + 1];
 
-    for (size_t i = 0; i < _str.size; ++i)
-    {
-        temp[i] = _str.data[i];
-        //temp[i] = data[i];
-    }
+for (size_t i = 0; i < _str.size; ++i)
+{
+    temp[i] = _str.data[i];
+}
+
+for (size_t i = 0; i < size; ++i)
+{
+    temp[_str.size + i] = data[i];
+}
+
+temp[newLength] = '\0';
+
+delete[] data;
+data = temp;
+size = newLength;
+
+return *this;
 
 
-    for (size_t i = 0; i < size; ++i)
-    {
-        temp[_str.size + i] = data[i];
-    }
 
-    temp[size + _str.size] = '\0';
+//char* temp = new char[size + _str.size + 1];
 
-    delete[] data;
-    data = temp;
-    size =+ _str.size;
-    //size += _str.size;
+//for (size_t i = 0; i < _str.size; ++i)
+//{
+//    temp[i] = _str.data[i];
+//    //temp[i] = data[i];
+//}
 
-    return *this;
+
+//for (size_t i = 0; i < size; ++i)
+//{
+//    temp[_str.size + i] = data[i];
+//}
+
+//temp[size + _str.size] = '\0';
+
+//delete[] data;
+//data = temp;
+//size = +_str.size;
+////size += _str.size;
+
+//return *this;
 }
 #pragma endCheck
 
