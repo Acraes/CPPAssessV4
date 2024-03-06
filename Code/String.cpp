@@ -133,21 +133,51 @@ String& String::Append(const String& _str)
 
 
 
-        size_t newLength = size + _str.size;
-    char* temp = new char[newLength + 1];
+    size_t newLength = size + _str.size;
+char* temp = new char[newLength + 1];
 
-    for (size_t i = 0; i < _str.size; ++i)
-    {
-        temp[size + i] = _str.data[i];
-    }
+for (size_t i = 0; i < size; ++i) {
+    temp[i] = data[i];
+}
 
-    temp[newLength] = '\0';
+for (size_t i = 0; i < _str.size; ++i) {
+    temp[size + i] = _str.data[i];
+}
 
-    delete[] data;
-    data = temp;
-    size = newLength;
+temp[newLength] = '\0';
 
-    return *this;
+delete[] data;
+data = temp;
+size = newLength;
+
+return *this;
+
+///Update, redid it, had a issue where one of my Append/Prepend was changing into "=", more accurately replacing all characters for "=" meaning if i had Space in it, it would be "Hello=====World".
+///Reason for this seems to be the memory being managed during the Append and Prepend methods, specifically the code above was to properly allocate and copy the characters of the original and the string being appended/prepended.
+
+
+
+
+
+
+
+
+
+    //     size_t newLength = size + _str.size;
+    // char* temp = new char[newLength + 1];
+
+    // for (size_t i = 0; i < _str.size; ++i)
+    // {
+    //     temp[size + i] = _str.data[i];
+    // }
+
+    // temp[newLength] = '\0';
+
+    // delete[] data;
+    // data = temp;
+    // size = newLength;
+
+    // return *this;
 
 
 
@@ -180,16 +210,16 @@ String& String::Prepend(const String& _str)
     ///Prepends another string to the current string.
     ///Copies the characters from the appended string and then from the current string into the new memory.
     ///Updates the size and deallocates the old memory, assigning the new memory to 'data'.
+
+
     size_t newLength = size + _str.size;
 char* temp = new char[newLength + 1];
 
-for (size_t i = 0; i < _str.size; ++i)
-{
+for (size_t i = 0; i < _str.size; ++i) {
     temp[i] = _str.data[i];
 }
 
-for (size_t i = 0; i < size; ++i)
-{
+for (size_t i = 0; i < size; ++i) {
     temp[_str.size + i] = data[i];
 }
 
@@ -200,6 +230,39 @@ data = temp;
 size = newLength;
 
 return *this;
+
+
+
+
+
+
+
+
+
+
+
+
+
+//     size_t newLength = size + _str.size;
+// char* temp = new char[newLength + 1];
+
+// for (size_t i = 0; i < _str.size; ++i)
+// {
+//     temp[i] = _str.data[i];
+// }
+
+// for (size_t i = 0; i < size; ++i)
+// {
+//     temp[_str.size + i] = data[i];
+// }
+
+// temp[newLength] = '\0';
+
+// delete[] data;
+// data = temp;
+// size = newLength;
+
+// return *this;
 
 
 
