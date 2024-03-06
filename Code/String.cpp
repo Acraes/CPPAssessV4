@@ -133,7 +133,26 @@ String& String::Append(const String& _str)
 
 
 
-    char* temp = new char[size + _str.size + 1];
+        size_t newLength = size + _str.size;
+    char* temp = new char[newLength + 1];
+
+    for (size_t i = 0; i < _str.size; ++i)
+    {
+        temp[size + i] = _str.data[i];
+    }
+
+    temp[newLength] = '\0';
+
+    delete[] data;
+    data = temp;
+    size = newLength;
+
+    return *this;
+
+
+
+
+    /*char* temp = new char[size + _str.size + 1];
 
     for (size_t i = 0; i < size; ++i)
     {
@@ -152,7 +171,7 @@ String& String::Append(const String& _str)
     data = temp;
     size += _str.size;
 
-    return *this;
+    return *this;*/
 }
 
 
