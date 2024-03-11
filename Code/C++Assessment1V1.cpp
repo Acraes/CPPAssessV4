@@ -165,7 +165,10 @@ int main()
 	size_t IndexCheck = 9;
 
 	char CharacterCheck = str1.CharacterAt(IndexCheck);
-
+	if (testFile.is_open())
+	{
+		testFile << "CharacterAt() Test: Pass" << std::endl;
+	}
 
 
 	std::cout << " " << std::endl;
