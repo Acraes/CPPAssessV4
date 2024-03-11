@@ -27,6 +27,7 @@ int DisplayString()
 //Just main 
 int main()
 {
+	
 	String str1;
 	String str2;
 	String _InputStr;
@@ -67,7 +68,7 @@ int main()
 	str1.Append(" ");
 	str1.Append("World");
 	str1.Prepend("Hello");
-	
+
 	str1.WriteToConsole();
 	std::cout << "" << std::endl;
 #pragma endregion
@@ -100,6 +101,7 @@ int main()
 
 	char CharacterCheck = str1.CharacterAt(IndexCheck);
 
+	
 
 	std::cout << " " << std::endl;
 	str1.WriteToConsole();
@@ -117,28 +119,35 @@ int main()
 	std::cout << "SubString inside String check: " << std::endl;
 	if (index1 != String::notFound) {
 		std::cout << "Substring '" << substr1.CStr() << "' found at index: " << index1 << std::endl;
+		TestFile << substr1.CStr() << " Successfully found at: " << index1 << std::endl;
+		TestFile << "Find() Test: Pass" << std::endl;
 	}
 	else {
 		std::cout << "Substring '" << substr1.CStr() << "' not found in the string." << std::endl;
+		TestFile << substr1.CStr() << " Wasn't found in string1" << std::endl;
+		TestFile << "Find() Test: Fail" << std::endl;
 	}
 
 	if (index2 != String::notFound) {
 		std::cout << "Substring '" << substr2.CStr() << "' found at index: " << index2 << std::endl;
+		TestFile << substr2.CStr() << " Successfully found at: " << index2 << std::endl;
+		TestFile << "Find() Test: Fail" << std::endl;
 	}
 	else {
 		std::cout << "Substring '" << substr2.CStr() << "' not found in the string." << std::endl;
-		TestFile << "Find() Failed";
+		TestFile << substr2.CStr() << " Wasn't found in string1";
+		TestFile << "Find() Test: Pass" << std::endl;
 	}
 	///This is the result output
 #pragma endregion
 
 	std::cout << "Input Key: ";
-///ReadFromConsole taking whatever input is... Inputted into the console and then WriteToConsole writing the value to check it works.
+	///ReadFromConsole taking whatever input is... Inputted into the console and then WriteToConsole writing the value to check it works.
 	_InputStr.ReadFromConsole();
 	std::cout << "Key Inputted: ";
 	_InputStr.WriteToConsole();
 
-	
+
 	TestFile.close();
 
 	return 0;
