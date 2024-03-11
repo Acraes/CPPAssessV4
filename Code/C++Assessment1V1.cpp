@@ -69,8 +69,23 @@ int main()
 	str1.Append("World");
 	str1.Prepend("Hello");
 
+
+	if (TestFile.is_open())
+	{
+		TestFile << str1.CStr() << " Append and Prepend Successful." << std::endl;
+
+		TestFile.close();
+
+	}
+
+
+
 	str1.WriteToConsole();
 	std::cout << "" << std::endl;
+
+
+
+
 #pragma endregion
 	//str1.ToLower();
 	//str1.ToUpper();
