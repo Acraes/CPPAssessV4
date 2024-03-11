@@ -1,6 +1,12 @@
 #include <iostream>
 #include "String.h"
 #include <fstream>
+#include <chrono>
+#include <ctime>
+
+
+///Took a while to figure out how to get the current time to be displayed,  purely for presentation in the Text file, got this from the internet.
+
 //#include <string>
 
 // I assume you want me to use the custom class String.h and not <string>
@@ -24,15 +30,44 @@ int DisplayString()
 	return 0;
 }
 */
+
+
+
+
+
 //Just main 
 int main()
 {
-	
+
 	String str1;
 	String str2;
 	String _InputStr;
 
-	std::ofstream TestFile("Test.txt");
+	String time;
+
+	String str1Test;
+
+	
+
+	std::ofstream testFile("Test.txt");
+	
+
+	///MY GOD, finding a way to do this was far harder than i feel it should have been, Once again, only doing this for looks and to be more accurate to the Example given on the C++ 3rd Assessment.
+	auto ct = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+	char buf[26];
+	ctime_s(buf, sizeof(buf), &ct);
+
+	if (testFile.is_open())
+	{
+		
+		testFile << "Date: " << buf << std::endl;
+
+
+
+		//testFile.close();
+	}
+
+
 	//str1.Find("Hello World");
 
 	//str1.Append("Hello");
@@ -69,17 +104,29 @@ int main()
 	str1.Append("World");
 	str1.Prepend("Hello");
 
+	///This didn't really test if the Append and prepend were successful.
+	// if (testFile.is_open())
+	// {
+	// 	testFile << str1.CStr() << " Append and Prepend Successful." << std::endl;
 
-	if (TestFile.is_open())
+	// 	testFile.close();
+
+	// }
+
+	/*str1Test = "Hello World";
+
+	str1Test.WriteToConsole();*/
+	str1Test.Append("Hello World");
+
+	if (str1.EqualTo(str1Test))
 	{
-		TestFile << str1.CStr() << " Append and Prepend Successful." << std::endl;
-
-		TestFile.close();
-
+		testFile << "Append and Prepend Successfully Operational." << std::endl;
 	}
-
-
-
+	else
+	{
+		testFile << "Append and Prepend Failure." << std::endl;
+	}
+	
 	str1.WriteToConsole();
 	std::cout << "" << std::endl;
 
@@ -116,7 +163,7 @@ int main()
 
 	char CharacterCheck = str1.CharacterAt(IndexCheck);
 
-	
+
 
 	std::cout << " " << std::endl;
 	str1.WriteToConsole();
@@ -134,24 +181,24 @@ int main()
 	std::cout << "SubString inside String check: " << std::endl;
 	if (index1 != String::notFound) {
 		std::cout << "Substring '" << substr1.CStr() << "' found at index: " << index1 << std::endl;
-		TestFile << substr1.CStr() << " Successfully found at: " << index1 << std::endl;
-		TestFile << "Find() Test: Pass" << std::endl;
+		testFile << substr1.CStr() << " Successfully found at: " << index1 << std::endl;
+		testFile << "Find() Test: Pass" << std::endl;
 	}
 	else {
 		std::cout << "Substring '" << substr1.CStr() << "' not found in the string." << std::endl;
-		TestFile << substr1.CStr() << " Wasn't found in string1" << std::endl;
-		TestFile << "Find() Test: Fail" << std::endl;
+		testFile << substr1.CStr() << " Wasn't found in string1" << std::endl;
+		testFile << "Find() Test: Fail" << std::endl;
 	}
 
 	if (index2 != String::notFound) {
 		std::cout << "Substring '" << substr2.CStr() << "' found at index: " << index2 << std::endl;
-		TestFile << substr2.CStr() << " Successfully found at: " << index2 << std::endl;
-		TestFile << "Find() Test: Fail" << std::endl;
+		testFile << substr2.CStr() << " Successfully found at: " << index2 << std::endl;
+		testFile << "Find() Test: Fail" << std::endl;
 	}
 	else {
 		std::cout << "Substring '" << substr2.CStr() << "' not found in the string." << std::endl;
-		TestFile << substr2.CStr() << " Wasn't found in string1";
-		TestFile << "Find() Test: Pass" << std::endl;
+		testFile << substr2.CStr() << " Wasn't found in string1";
+		testFile << "Find() Test: Pass" << std::endl;
 	}
 	///This is the result output
 #pragma endregion
@@ -163,7 +210,7 @@ int main()
 	_InputStr.WriteToConsole();
 
 
-	TestFile.close();
+	testFile.close();
 
 	return 0;
 }
