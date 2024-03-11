@@ -49,7 +49,7 @@ int main()
 
 	
 
-	std::ofstream testFile("Test.txt");
+	std::ofstream testFile("Test.txt", std::ios::app);
 	
 
 	///MY GOD, finding a way to do this was far harder than i feel it should have been, Once again, only doing this for looks and to be more accurate to the Example given on the C++ 3rd Assessment.
@@ -120,11 +120,11 @@ int main()
 
 	if (str1.EqualTo(str1Test))
 	{
-		testFile << "Append and Prepend Successfully Operational." << std::endl;
+		testFile << "Append/Prepend: Pass" << std::endl;
 	}
 	else
 	{
-		testFile << "Append and Prepend Failure." << std::endl;
+		testFile << "Append/Prepend: Fail" << std::endl;
 	}
 	
 	str1.WriteToConsole();
@@ -182,23 +182,23 @@ int main()
 	if (index1 != String::notFound) {
 		std::cout << "Substring '" << substr1.CStr() << "' found at index: " << index1 << std::endl;
 		testFile << substr1.CStr() << " Successfully found at: " << index1 << std::endl;
-		testFile << "Find() Test: Pass" << std::endl;
+		testFile << " || Find() Test: Pass" << std::endl;
 	}
 	else {
 		std::cout << "Substring '" << substr1.CStr() << "' not found in the string." << std::endl;
 		testFile << substr1.CStr() << " Wasn't found in string1" << std::endl;
-		testFile << "Find() Test: Fail" << std::endl;
+		testFile << " || Find() Test: Fail" << std::endl;
 	}
 
 	if (index2 != String::notFound) {
 		std::cout << "Substring '" << substr2.CStr() << "' found at index: " << index2 << std::endl;
 		testFile << substr2.CStr() << " Successfully found at: " << index2 << std::endl;
-		testFile << "Find() Test: Fail" << std::endl;
+		testFile << " || Find() Test: Fail" << std::endl;
 	}
 	else {
 		std::cout << "Substring '" << substr2.CStr() << "' not found in the string." << std::endl;
 		testFile << substr2.CStr() << " Wasn't found in string1";
-		testFile << "Find() Test: Pass" << std::endl;
+		testFile << " || Find() Test: Pass" << std::endl;
 	}
 	///This is the result output
 #pragma endregion
@@ -209,8 +209,9 @@ int main()
 	std::cout << "Key Inputted: ";
 	_InputStr.WriteToConsole();
 
-
+	testFile << " " << std::endl;
 	testFile.close();
+
 
 	return 0;
 }
