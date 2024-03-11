@@ -1,6 +1,6 @@
 #include <iostream>
 #include "String.h"
-
+#include <fstream>
 //#include <string>
 
 // I assume you want me to use the custom class String.h and not <string>
@@ -30,6 +30,8 @@ int main()
 	String str1;
 	String str2;
 	String _InputStr;
+
+	std::ofstream TestFile("Test.txt");
 	//str1.Find("Hello World");
 
 	//str1.Append("Hello");
@@ -125,6 +127,7 @@ int main()
 	}
 	else {
 		std::cout << "Substring '" << substr2.CStr() << "' not found in the string." << std::endl;
+		TestFile << "Find() Failed";
 	}
 	///This is the result output
 #pragma endregion
@@ -134,6 +137,9 @@ int main()
 	_InputStr.ReadFromConsole();
 	std::cout << "Key Inputted: ";
 	_InputStr.WriteToConsole();
+
+	
+	TestFile.close();
 
 	return 0;
 }
