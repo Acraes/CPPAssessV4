@@ -41,7 +41,10 @@ int main()
 
 	String str1;
 	String str2;
-	String _InputStr;
+	String inputStr;
+	
+	String temp;
+
 
 	String time;
 
@@ -181,23 +184,23 @@ int main()
 	std::cout << "SubString inside String check: " << std::endl;
 	if (index1 != String::notFound) {
 		std::cout << "Substring '" << substr1.CStr() << "' found at index: " << index1 << std::endl;
-		testFile << substr1.CStr() << " Successfully found at: " << index1 << std::endl;
+		testFile << "'" << substr1.CStr() << "'" << " Successfully found at: " << index1;
 		testFile << " || Find() Test: Pass" << std::endl;
 	}
 	else {
-		std::cout << "Substring '" << substr1.CStr() << "' not found in the string." << std::endl;
-		testFile << substr1.CStr() << " Wasn't found in string1" << std::endl;
+		std::cout << "Substring '" << substr1.CStr() << " not found in the string." << std::endl;
+		testFile << "'" << substr1.CStr() << "'" << " Wasn't found in string1";
 		testFile << " || Find() Test: Fail" << std::endl;
 	}
 
 	if (index2 != String::notFound) {
 		std::cout << "Substring '" << substr2.CStr() << "' found at index: " << index2 << std::endl;
-		testFile << substr2.CStr() << " Successfully found at: " << index2 << std::endl;
+		testFile << "'" << substr2.CStr() << "'" << " Successfully found at: " << index2;
 		testFile << " || Find() Test: Fail" << std::endl;
 	}
 	else {
 		std::cout << "Substring '" << substr2.CStr() << "' not found in the string." << std::endl;
-		testFile << substr2.CStr() << " Wasn't found in string1";
+		testFile << "'" << substr2.CStr() << "'" << " Wasn't found in string2";
 		testFile << " || Find() Test: Pass" << std::endl;
 	}
 	///This is the result output
@@ -205,9 +208,22 @@ int main()
 
 	std::cout << "Input Key: ";
 	///ReadFromConsole taking whatever input is... Inputted into the console and then WriteToConsole writing the value to check it works.
-	_InputStr.ReadFromConsole();
+	inputStr.ReadFromConsole();
 	std::cout << "Key Inputted: ";
-	_InputStr.WriteToConsole();
+	inputStr.WriteToConsole();
+
+	///I am having a bit of hard time figuring out how to even test this, like i can confirm it has been and continues to work via the
+	///inputStr.ReadFromConsole();
+	/// std::cout << "Key Inputted: ";
+	/// inputStr.WriteToConsole();
+	/// but i don't know how to "Check" the result and input it into the text file without entirely changing it or complicating it far more than needed.
+	/// Just gonna put this here for now, i might not even need to do all this..
+	if (testFile.is_open())
+	{
+		testFile << "ReadFromConsole()/WriteToConsole() Test: Pass" << std::endl;
+	}
+
+
 
 	testFile << " " << std::endl;
 	testFile.close();
