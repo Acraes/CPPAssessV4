@@ -1,5 +1,6 @@
 #include <iostream>
 #include "String.h"
+#include "Player.h"
 #include <fstream>
 #include <chrono>
 #include <ctime>
@@ -42,64 +43,84 @@ int main()
 	String str1;
 	String str2;
 	String inputStr;
-	
+
 	String temp;
 
 
-	String time;
+	//String time;
 
 	String str1Test;
 
+
+
+	String inpCmd;
+	String nameStr1;
+	String nameStr2;
+	String beginStr1;
+
+	beginStr1.Append("Welcome to the Game!");
+
+	beginStr1.WriteToConsole();
+	std::cout << "" << std::endl;
+	nameStr1.Prepend("What is your Character's name?: ");
+	nameStr1.WriteToConsole();
+	inpCmd.ReadFromConsole();
+
+	nameStr2.Append(inpCmd);
+	nameStr2.Append(" huh? What a unique name! Nice to meet you!");
+	nameStr2.WriteToConsole();
+
 	
 
-	std::ofstream testFile("Test.txt", std::ios::app);
-	
 
-	///MY GOD, finding a way to do this was far harder than i feel it should have been, Once again, only doing this for looks and to be more accurate to the Example given on the C++ 3rd Assessment.
-	auto ct = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
-	char buf[26];
-	ctime_s(buf, sizeof(buf), &ct);
-
-	if (testFile.is_open())
-	{
-		
-		testFile << "Date: " << buf << std::endl;
+	/* 	 std::ofstream testFile("Test.txt", std::ios::app);
 
 
+		///MY GOD, finding a way to do this was far harder than i feel it should have been, Once again, only doing this for looks and to be more accurate to the Example given on the C++ 3rd Assessment.
+		auto ct = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+		char buf[26];
+		ctime_s(buf, sizeof(buf), &ct);
 
-		//testFile.close();
-	}
+		if (testFile.is_open())
+		{
 
-
-	//str1.Find("Hello World");
-
-	//str1.Append("Hello");
-
-	//str1.WriteToConsole();
-
-	//str1.WriteToConsole();
-	//return 0;
-	//std::cout << str1.Length() << std::endl;
-
-	//str1.Append(" ");
-
-	//std::cout << str1.Length() << std::endl;
+			testFile << "Date: " << buf << std::endl;
 
 
-	//str1.WriteToConsole();
-	//return 0;
-#pragma region
-/// Append, to write a small bit of string at the back of the string. Since there isn't anything at this point it will just add them in.
-	//str1.Append(" ");
-	///Here it will add World behind the space, leaving " World"
-	//str1.Append("World");
 
-	//str1.ToLower();
-	//str1.ToUpper();
-	///Prepend then inputs a small section into the string like Append but instead at the front. With this making it "Hello World"
-	/*str1.Append("Hello");
-	str1.Append(" ");
-	str1.Append("World");*/
+			//testFile.close();
+		}
+
+
+		//str1.Find("Hello World");
+
+		//str1.Append("Hello");
+
+		//str1.WriteToConsole();
+
+		//str1.WriteToConsole();
+		//return 0;
+		//std::cout << str1.Length() << std::endl;
+
+		//str1.Append(" ");
+
+		//std::cout << str1.Length() << std::endl;
+
+
+		//str1.WriteToConsole();
+		//return 0;
+	#pragma region
+	/// Append, to write a small bit of string at the back of the string. Since there isn't anything at this point it will just add them in.
+		//str1.Append(" ");
+		///Here it will add World behind the space, leaving " World"
+		//str1.Append("World");
+
+		//str1.ToLower();
+		//str1.ToUpper();
+		///Prepend then inputs a small section into the string like Append but instead at the front. With this making it "Hello World"
+		/*str1.Append("Hello");
+		str1.Append(" ");
+		str1.Append("World");*/
 
 
 
@@ -119,7 +140,7 @@ int main()
 	/*str1Test = "Hello World";
 
 	str1Test.WriteToConsole();*/
-	str1Test.Append("Hello World");
+	/* str1Test.Append("Hello World");
 
 	if (str1.EqualTo(str1Test))
 	{
@@ -129,9 +150,9 @@ int main()
 	{
 		testFile << "Append/Prepend: Fail" << std::endl;
 	}
-	
+
 	str1.WriteToConsole();
-	std::cout << "" << std::endl;
+	std::cout << "" << std::endl; */
 
 
 
@@ -141,6 +162,7 @@ int main()
 	//str1.ToUpper();
 
 #pragma region
+/*
 ///Same thing mentioned above but on the second string
 	std::cout << "Comparison: " << std::endl;
 	str2.Append(" ");
@@ -159,7 +181,7 @@ int main()
 	{
 		std::cout << "str1 is not equal to str2" << std::endl;
 	}
-#pragma region 
+#pragma region
 	///this section is to check what character is at the Index listed. In this case 4, so "o". 0 = H, 1 = e, 2 = l e.t.c.
 	std::cout << "CharacterAt Check: " << std::endl;
 	size_t IndexCheck = 9;
@@ -230,7 +252,7 @@ int main()
 
 	testFile << " " << std::endl;
 	testFile.close();
-
+ */
 
 	return 0;
 }
