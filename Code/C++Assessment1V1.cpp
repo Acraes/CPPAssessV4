@@ -69,9 +69,11 @@ int main()
 	nameStr2.Append(inpCmd);
 	nameStr2.Append(" huh? What a unique name! Nice to meet you!");
 	nameStr2.WriteToConsole();
+	std::cout << "" << std::endl;
+	Player player(inpCmd);
 
-	
 
+	std::cout << "Player's name: " << player.GetName().CStr() << std::endl;
 
 	/* 	 std::ofstream testFile("Test.txt", std::ios::app);
 

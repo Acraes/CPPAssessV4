@@ -1,7 +1,7 @@
 #pragma once
 #ifndef CUSTOM_STRING_HEADER
 #define CUSTOM_STRING_HEADER
-
+#include <cstdint>
 class String
 {
 	///Simple string class, has constructors, destructors, static constants in the first section of public
@@ -45,13 +45,13 @@ private:
 
 	/*int GetLength(const char* _str)
 	{
-		
+
 		size = 0;
 		while (_str[size] != '\0')
 		{
 			++size;
 		}
-	
+
 		return size;
 
 	}
