@@ -57,6 +57,8 @@ int main()
 	String roomName4;
 	String roomName5;
 
+
+
 	roomName1.Prepend("First room");
 	roomName2.Prepend("Second room");
 	roomName3.Prepend("Third room");
@@ -69,9 +71,36 @@ int main()
 	Room* room4 = new Room(roomName4, "Enemy Room");
 	Room* room5 = new Room(roomName5, "End Room");
 
-
-
 	
+
+	room1 -> addExit("north", room2);
+	room2 -> addExit("north", room3);
+	room3 -> addExit("north", room4);
+	room4 -> addExit("north", room5);
+	
+	room2 -> addExit("south", room1);
+	room3 -> addExit("south", room2);
+	room4 -> addExit("south", room3);
+	
+
+	Room* currentRoom = room1;
+
+	while (true)
+	{
+		
+
+
+
+
+
+		if (currentRoom == room5)
+		{
+			String finStr;
+			finStr.Append("You finished the game!");
+			finStr.WriteToConsole();
+			break;
+		}
+	}
 
 
 
