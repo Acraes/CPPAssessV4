@@ -2,27 +2,27 @@
 #include "String.h"
 #include <map>
 
-class Room 
+class Room
 {
-    public:
-
-    
-        Room(const String& _name, const String& _descript);
+public:
 
 
-
-        void addExit(const String& dir, Room* room);
-        Room* getExit(const String& dir) const;
-
-        String getName() const;
+    Room(const String& _name, const String& _descript);
 
 
-        String getDescription() const;
-        void setDescription(const String& descript);
+
+    void addExit(const String& dir, Room* room);
+    Room* getExit(const String& dir) const;
+
+    String getName() const;
 
 
-    private:
-        String name;
-        String descript;
-        std::map<String, Room*> exits;
+    String getDescription() const;
+    void setDescription(const String& descript);
+
+
+private:
+    String name;
+    String descript;
+    std::map<String, Room*> exits;
 };

@@ -7,23 +7,23 @@
 #pragma String
 String::String()
 {
-	///Default Constructor
+    ///Default Constructor
     data = new char[1];
     data[0] = '\0';
     size = 0; /// size set to 0 indicating a empty string.
 
     ///Initalizes empty string by allocating memory for one character and setting it to the null character.
-    
+
 
 }
 
 String::String(const char* _str)
 {
-    
+
 
     ///Calculates the size of the input string by iterating through it until it reaches null.
     ///Memory allocated for the string 'data = new char[size + 1];' and copies it over.
-    size = 0; 
+    size = 0;
     while (_str[size] != '\0')
     {
         ++size;
@@ -37,7 +37,7 @@ String::String(const char* _str)
     data[size] = '\0';
     ///Escape character set to null to ensure the string is deleted.
 }
-String::String(const String& _other) 
+String::String(const String& _other)
 {
     ///Copy Constructor
     ///Constructor creates a new string object by copying the content of another string object.
@@ -64,7 +64,7 @@ String::~String()
 size_t String::Length() const
 {
     ///Returns the length of the string, which is stored in the 'size' member variable.
-    
+
     return size;
 
 
@@ -88,7 +88,7 @@ char& String::CharacterAt(size_t _index)
     }
 }
 
-const char& String::CharacterAt(size_t _index) const 
+const char& String::CharacterAt(size_t _index) const
 {
     /// Overloaded version of CharacterAt function for const objects.
     ///Same as 'CharacterAt' function but doesn't print anything other than the error message and a reference to the character at the specified index for consts'.
@@ -134,26 +134,106 @@ String& String::Append(const String& _str)
 
 
     size_t newLength = size + _str.size;
-char* temp = new char[newLength + 1];
+    char* temp = new char[newLength + 1];
 
-for (size_t i = 0; i < size; ++i) {
-    temp[i] = data[i];
+    for (size_t i = 0; i < size; ++i) {
+        temp[i] = data[i];
+    }
+
+    for (size_t i = 0; i < _str.size; ++i) {
+        temp[size + i] = _str.data[i];
+    }
+
+    temp[newLength] = '\0';
+
+    delete[] data;
+    data = temp;
+    size = newLength;
+
+    return *this;
+
+    ///Update, redid it, had a issue where one of my Append/Prepend was changing into "=", more accurately replacing all characters for "=" meaning if i had Space in it, it would be "Hello=====World".
+    ///Reason for this seems to be the memory being managed during the Append and Prepend methods, specifically the code above was to properly allocate and copy the characters of the original and the string being appended/prepended.
+
+
+
+
+
+
+
+
+
+        //     size_t newLength = size + _str.size;
+        // char* temp = new char[newLength + 1];
+
+        // for (size_t i = 0; i < _str.size; ++i)
+        // {
+        //     temp[size + i] = _str.data[i];
+        // }
+
+        // temp[newLength] = '\0';
+
+        // delete[] data;
+        // data = temp;
+        // size = newLength;
+
+        // return *this;
+
+
+
+
+        /*char* temp = new char[size + _str.size + 1];
+
+        for (size_t i = 0; i < size; ++i)
+        {
+            temp[i] = data[i];
+        }
+
+        for (size_t i = 0; i < _str.size; ++i)
+        {
+            temp[size + i] = _str.data[i];
+        }
+
+        temp[size + _str.size] = '\0';
+
+        delete[] data;
+
+        data = temp;
+        size += _str.size;
+
+        return *this;*/
 }
 
-for (size_t i = 0; i < _str.size; ++i) {
-    temp[size + i] = _str.data[i];
-}
 
-temp[newLength] = '\0';
+String& String::Prepend(const String& _str)
+{
+    ///Prepends another string to the current string.
+    ///Copies the characters from the appended string and then from the current string into the new memory.
+    ///Updates the size and deallocates the old memory, assigning the new memory to 'data'.
 
-delete[] data;
-data = temp;
-size = newLength;
 
-return *this;
+    size_t newLength = size + _str.size;
+    char* temp = new char[newLength + 1];
 
-///Update, redid it, had a issue where one of my Append/Prepend was changing into "=", more accurately replacing all characters for "=" meaning if i had Space in it, it would be "Hello=====World".
-///Reason for this seems to be the memory being managed during the Append and Prepend methods, specifically the code above was to properly allocate and copy the characters of the original and the string being appended/prepended.
+    for (size_t i = 0; i < _str.size; ++i) {
+        temp[i] = _str.data[i];
+    }
+
+    for (size_t i = 0; i < size; ++i) {
+        temp[_str.size + i] = data[i];
+    }
+
+    temp[newLength] = '\0';
+
+    delete[] data;
+    data = temp;
+    size = newLength;
+
+    return *this;
+
+
+
+
 
 
 
@@ -168,7 +248,12 @@ return *this;
 
     // for (size_t i = 0; i < _str.size; ++i)
     // {
-    //     temp[size + i] = _str.data[i];
+    //     temp[i] = _str.data[i];
+    // }
+
+    // for (size_t i = 0; i < size; ++i)
+    // {
+    //     temp[_str.size + i] = data[i];
     // }
 
     // temp[newLength] = '\0';
@@ -181,113 +266,28 @@ return *this;
 
 
 
+    //char* temp = new char[size + _str.size + 1];
 
-    /*char* temp = new char[size + _str.size + 1];
-
-    for (size_t i = 0; i < size; ++i)
-    {
-        temp[i] = data[i];
-    }
-
-    for (size_t i = 0; i < _str.size; ++i)
-    {
-        temp[size + i] = _str.data[i];
-    }
-
-    temp[size + _str.size] = '\0';
-
-    delete[] data;
-
-    data = temp;
-    size += _str.size;
-
-    return *this;*/
-}
+    //for (size_t i = 0; i < _str.size; ++i)
+    //{
+    //    temp[i] = _str.data[i];
+    //    //temp[i] = data[i];
+    //}
 
 
-String& String::Prepend(const String& _str)
-{
-    ///Prepends another string to the current string.
-    ///Copies the characters from the appended string and then from the current string into the new memory.
-    ///Updates the size and deallocates the old memory, assigning the new memory to 'data'.
+    //for (size_t i = 0; i < size; ++i)
+    //{
+    //    temp[_str.size + i] = data[i];
+    //}
 
+    //temp[size + _str.size] = '\0';
 
-    size_t newLength = size + _str.size;
-char* temp = new char[newLength + 1];
+    //delete[] data;
+    //data = temp;
+    //size = +_str.size;
+    ////size += _str.size;
 
-for (size_t i = 0; i < _str.size; ++i) {
-    temp[i] = _str.data[i];
-}
-
-for (size_t i = 0; i < size; ++i) {
-    temp[_str.size + i] = data[i];
-}
-
-temp[newLength] = '\0';
-
-delete[] data;
-data = temp;
-size = newLength;
-
-return *this;
-
-
-
-
-
-
-
-
-
-
-
-
-
-//     size_t newLength = size + _str.size;
-// char* temp = new char[newLength + 1];
-
-// for (size_t i = 0; i < _str.size; ++i)
-// {
-//     temp[i] = _str.data[i];
-// }
-
-// for (size_t i = 0; i < size; ++i)
-// {
-//     temp[_str.size + i] = data[i];
-// }
-
-// temp[newLength] = '\0';
-
-// delete[] data;
-// data = temp;
-// size = newLength;
-
-// return *this;
-
-
-
-//char* temp = new char[size + _str.size + 1];
-
-//for (size_t i = 0; i < _str.size; ++i)
-//{
-//    temp[i] = _str.data[i];
-//    //temp[i] = data[i];
-//}
-
-
-//for (size_t i = 0; i < size; ++i)
-//{
-//    temp[_str.size + i] = data[i];
-//}
-
-//temp[size + _str.size] = '\0';
-
-//delete[] data;
-//data = temp;
-//size = +_str.size;
-////size += _str.size;
-
-//return *this;
+    //return *this;
 }
 #pragma endCheck
 
@@ -340,7 +340,7 @@ size_t String::Find(const String& _str)
         bool match = true;
         for (size_t j = 0; j < _str.size; ++j)
         {
-            if (data[i + j] != _str.data[j]) 
+            if (data[i + j] != _str.data[j])
             {
                 match = false;
                 break;
@@ -442,6 +442,8 @@ bool String::operator>(const String& other) const
 {
     return strcmp(data, other.data) > 0;
 }
+
+
 ///Previously had some code here from when i was working on this a while ago i think, during the period of time when it hadn't been covered and i was looking for how to do this. 
 /// (Didn't use ChatGPT or anything like that, just a bunch of code from different sources, with some things changed here and there).
 /// Saw it and went, "Huh, that's weird." Deleted it and moved on to comment sections.

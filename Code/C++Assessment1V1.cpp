@@ -71,47 +71,49 @@ int main()
 	Room* room4 = new Room(roomName4, "Room Description: Enemy Room, Another enemy is infront of you.");
 	Room* room5 = new Room(roomName5, "Room Description: You've just left the dungeon! Congrats!");
 
-	
 
-	room1 -> addExit("north", room2);
-	room2 -> addExit("north", room3);
-	room3 -> addExit("north", room4);
-	room4 -> addExit("north", room5);
-	
-	room2 -> addExit("south", room1);
-	room3 -> addExit("south", room2);
-	room4 -> addExit("south", room3);
-	
+
+	room1->addExit("north", room2);
+	room2->addExit("north", room3);
+	room3->addExit("north", room4);
+	room4->addExit("north", room5);
+
+	room2->addExit("south", room1);
+	room3->addExit("south", room2);
+	room4->addExit("south", room3);
+
 
 	Room* currentRoom = room1;
 
 	while (true)
 	{
-		
+
 
 		if (currentRoom == room1)
 		{
-		String room1DescriptStr = room1 -> getDescription();
-		room1DescriptStr.WriteToConsole();
-		
+			String room1DescriptStr = room1->getDescription();
+			room1DescriptStr.WriteToConsole();
 
 
-		
-		beginStr1.Append("You've fallen into a dungeon!");
-		beginStr1.WriteToConsole();
-		std::cout << "" << std::endl;
-		nameStr1.Prepend("What is your Character's name?: ");
-		nameStr1.WriteToConsole();
-		inpCmd.ReadFromConsole();
-		std::cout << "" << std::endl;
-		Player player(inpCmd);
-		std::cout << "Player's name: " << player.GetName().CStr() << std::endl;
+
+
+			nameStr1.Prepend("What is your Character's name?: ");
+			nameStr1.WriteToConsole();
+			inpCmd.ReadFromConsole();
+			std::cout << "" << std::endl;
+			Player player(inpCmd);
+			std::cout << "Player's name: " << player.GetName().CStr() << std::endl;
+
+			std::cout << "" << std::endl;
+			beginStr1.Append("You've fallen into a dungeon!");
+			beginStr1.WriteToConsole();
+			std::cout << "" << std::endl;
 
 
 
 
 		}
-		
+
 
 
 
@@ -119,8 +121,8 @@ int main()
 
 		if (currentRoom == room5)
 		{
-			String finStr = room5 -> getDescription();
-			
+			String finStr = room5->getDescription();
+
 			finStr.WriteToConsole();
 			break;
 		}

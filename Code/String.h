@@ -2,6 +2,10 @@
 #ifndef CUSTOM_STRING_HEADER
 #define CUSTOM_STRING_HEADER
 #include <cstdint>
+#ifndef SIZE_MAX
+#define SIZE_MAX ((size_t)-1)
+#endif
+
 class String
 {
 	///Simple string class, has constructors, destructors, static constants in the first section of public
@@ -13,6 +17,10 @@ public:
 
 	~String();
 	static const size_t notFound = SIZE_MAX;
+	
+
+
+
 public:
 	///Public member functions 
 	/// 

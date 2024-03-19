@@ -2,43 +2,39 @@
 #include "String.h"
 
 
-class Spell 
+class Spell
 {
 
 public:
-    
+
 
 
 
 
 };
-
-
-
-
-
-
 
 
 
 
 class Player
 {
-    public:
-        Player();
-        Player(const String& _name);
-        ~Player();
-        
-        String GetName() const;
+public:
+    Player();
+    Player(const String& _name);
+    ~Player();
 
-        bool FindSpell(const String& spell) const;
+    String GetName() const;
 
-    private:
-        String name;
-        static const int maxSpells = 3;
-        String spellList[maxSpells];
+    bool FindSpell(const String& spell) const;
+
+private:
+    String name;
+    static const int maxSpells = 3;
+    String spellList[maxSpells];
 
 };
+
+
 
 
 

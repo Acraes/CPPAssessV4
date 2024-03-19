@@ -4,25 +4,25 @@
 
 
 
-Player::Player() 
+Player::Player()
 {
 
 }
 
-Player::Player(const String& name) : name(name) 
+Player::Player(const String& name) : name(name)
 {
 
 }
 
+Player::~Player()
+{
+
+}
 String Player::GetName() const
 {
     return name;
 }
 
-Player::~Player() 
-{
-
-}
 
 
 bool Player::FindSpell(const String& spell) const
