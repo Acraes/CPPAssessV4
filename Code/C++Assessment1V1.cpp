@@ -1,9 +1,10 @@
 #include <iostream>
-#include "String.h"
-#include "Player.h"
 #include <fstream>
 #include <chrono>
 #include <ctime>
+#include "String.h"
+#include "Player.h"
+#include "Room.h"
 
 
 ///Took a while to figure out how to get the current time to be displayed,  purely for presentation in the Text file, got this from the internet.
@@ -43,20 +44,36 @@ int main()
 	String str1;
 	String str2;
 	String inputStr;
-
 	String temp;
-
-
-	//String time;
-
 	String str1Test;
-
-
-
 	String inpCmd;
 	String nameStr1;
 	String nameStr2;
 	String beginStr1;
+
+	String roomName1;
+	String roomName2;
+	String roomName3;
+	String roomName4;
+	String roomName5;
+
+	roomName1.Prepend("First room");
+	roomName2.Prepend("Second room");
+	roomName3.Prepend("Third room");
+	roomName4.Prepend("Fourth room");
+	roomName5.Prepend("Fifth room");
+
+	Room* room1 = new Room(roomName1, "Starting Room");
+	Room* room2 = new Room(roomName2, "Enemy Room");
+	Room* room3 = new Room(roomName3, "Reward Room");
+	Room* room4 = new Room(roomName4, "Enemy Room");
+	Room* room5 = new Room(roomName5, "End Room");
+
+
+
+	
+
+
 
 	beginStr1.Append("Welcome to the Game!");
 
