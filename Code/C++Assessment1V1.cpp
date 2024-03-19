@@ -65,11 +65,11 @@ int main()
 	roomName4.Prepend("Fourth room");
 	roomName5.Prepend("Fifth room");
 
-	Room* room1 = new Room(roomName1, "Starting Room");
-	Room* room2 = new Room(roomName2, "Enemy Room");
-	Room* room3 = new Room(roomName3, "Reward Room");
-	Room* room4 = new Room(roomName4, "Enemy Room");
-	Room* room5 = new Room(roomName5, "End Room");
+	Room* room1 = new Room(roomName1, "Starting Room, there isn't anything in the room.");
+	Room* room2 = new Room(roomName2, "Enemy Room, there is an enemy infront of you.");
+	Room* room3 = new Room(roomName3, "Reward Room, there is a scroll with the instructions on a spell.");
+	Room* room4 = new Room(roomName4, "Enemy Room, Another enemy is infront of you.");
+	Room* room5 = new Room(roomName5, "You've just left the dungeon! Congrats!");
 
 	
 
@@ -88,6 +88,7 @@ int main()
 	while (true)
 	{
 		
+		
 
 
 
@@ -95,8 +96,8 @@ int main()
 
 		if (currentRoom == room5)
 		{
-			String finStr;
-			finStr.Append("You finished the game!");
+			String finStr = room5 -> getDescription();
+			
 			finStr.WriteToConsole();
 			break;
 		}
@@ -301,6 +302,14 @@ int main()
 	testFile << " " << std::endl;
 	testFile.close();
  */
+
+	delete room1;
+	delete room2;
+	delete room3;
+	delete room4;
+	delete room5;
+
+
 
 	return 0;
 }
