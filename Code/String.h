@@ -22,7 +22,8 @@ public:
 
 	bool EqualTo(const String& _other) const;
 	bool operator==(const String& other) const;
-
+	bool operator<(const String& other) const;
+	bool operator>(const String& other) const;
 
 	String& Append(const String& _str);
 	String& Prepend(const String& _str);
