@@ -26,7 +26,7 @@ class Player
 {
     public:
         Player();
-        Player(const String& name);
+        Player(const String& _name);
         ~Player();
         
         String GetName() const;

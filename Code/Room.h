@@ -5,6 +5,8 @@
 class Room 
 {
     public:
+
+    
         Room(const String& _name, const String& _descript);
 
 
@@ -13,7 +15,10 @@ class Room
         Room* getExit(const String& dir) const;
 
         String getName() const;
+
+
         String getDescription() const;
+        void setDescription(const String& descript);
 
 
     private:

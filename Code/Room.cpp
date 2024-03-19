@@ -22,6 +22,16 @@ Room* Room::getExit(const String& dir) const
 
 }
 
+String Room::getDescription() const 
+{
+    return descript;
 
 
+}
+
+//Note, forgot that i made the description part in Room.h, goddamn it, didn't even need this.
+void Room::setDescription(const String& _descript) 
+{
+    descript = _descript;
+}
 

@@ -65,11 +65,11 @@ int main()
 	roomName4.Prepend("Fourth room");
 	roomName5.Prepend("Fifth room");
 
-	Room* room1 = new Room(roomName1, "Starting Room, there isn't anything in the room.");
-	Room* room2 = new Room(roomName2, "Enemy Room, there is an enemy infront of you.");
-	Room* room3 = new Room(roomName3, "Reward Room, there is a scroll with the instructions on a spell.");
-	Room* room4 = new Room(roomName4, "Enemy Room, Another enemy is infront of you.");
-	Room* room5 = new Room(roomName5, "You've just left the dungeon! Congrats!");
+	Room* room1 = new Room(roomName1, "Room Description: Starting Room, there isn't anything in the room.");
+	Room* room2 = new Room(roomName2, "Room Description: Enemy Room, there is an enemy infront of you.");
+	Room* room3 = new Room(roomName3, "Room Description: Reward Room, there is a scroll with the instructions on a spell.");
+	Room* room4 = new Room(roomName4, "Room Description: Enemy Room, Another enemy is infront of you.");
+	Room* room5 = new Room(roomName5, "Room Description: You've just left the dungeon! Congrats!");
 
 	
 
@@ -88,6 +88,29 @@ int main()
 	while (true)
 	{
 		
+
+		if (currentRoom == room1)
+		{
+		String room1DescriptStr = room1 -> getDescription();
+		room1DescriptStr.WriteToConsole();
+		
+
+
+		
+		beginStr1.Append("You've fallen into a dungeon!");
+		beginStr1.WriteToConsole();
+		std::cout << "" << std::endl;
+		nameStr1.Prepend("What is your Character's name?: ");
+		nameStr1.WriteToConsole();
+		inpCmd.ReadFromConsole();
+		std::cout << "" << std::endl;
+		Player player(inpCmd);
+		std::cout << "Player's name: " << player.GetName().CStr() << std::endl;
+
+
+
+
+		}
 		
 
 
@@ -105,22 +128,6 @@ int main()
 
 
 
-	beginStr1.Append("Welcome to the Game!");
-
-	beginStr1.WriteToConsole();
-	std::cout << "" << std::endl;
-	nameStr1.Prepend("What is your Character's name?: ");
-	nameStr1.WriteToConsole();
-	inpCmd.ReadFromConsole();
-
-	nameStr2.Append(inpCmd);
-	nameStr2.Append(" huh? What a unique name! Nice to meet you!");
-	nameStr2.WriteToConsole();
-	std::cout << "" << std::endl;
-	Player player(inpCmd);
-
-
-	std::cout << "Player's name: " << player.GetName().CStr() << std::endl;
 
 	/* 	 std::ofstream testFile("Test.txt", std::ios::app);
 
