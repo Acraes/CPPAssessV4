@@ -44,8 +44,8 @@ void gameOver()
 	std::cout << "" << std::endl;
 	gameOverStr2.Append("Game Over.");
 	gameOverStr2.WriteToConsole();
-	
-	
+
+
 }
 
 
@@ -54,7 +54,7 @@ void gameOver()
 int main()
 {
 	Player player;
-
+	Item GreatAxe("Great Axe", "A big axe");
 
 
 	String str1;
@@ -67,7 +67,7 @@ int main()
 	String nameStr2;
 
 	String continueInput;
-	
+
 
 
 	String beginStr1;
@@ -157,7 +157,7 @@ int main()
 			choiceStr1.ReadFromConsole();
 			if (choiceStr1 == "North" || choiceStr1 == "2" || choiceStr1 == "Leave")
 			{
-					
+
 				Room* nextRoom = currentRoom->getExit("north");
 				if (nextRoom != nullptr)
 				{
@@ -213,7 +213,7 @@ int main()
 			room2Str.WriteToConsole();
 			std::cout << "" << std::endl;
 
-			
+
 			room2Str1.Append("A Monster has it's back to you, what will you do?");
 			room2Str1.WriteToConsole();
 			std::cout << "" << std::endl;
@@ -229,17 +229,17 @@ int main()
 			choiceStr2.ReadFromConsole();
 			if (choiceStr2 == "Sneak around" || choiceStr2 == "1")
 			{
-				
+
 				String DeathOutcome1;
 
 				DeathOutcome1.Append("The monster hears you walk, turns around and attacks you, you died unable to put up a fight.");
 				DeathOutcome1.WriteToConsole();
 				continueInput.ReadFromConsole();
 				gameOver();
-			
-				
+
+
 				break;
-				
+
 			}
 			if (choiceStr2 == "Attack" || choiceStr2 == "2")
 			{
@@ -276,9 +276,23 @@ int main()
 						std::cout << "Not working >:(" << std::endl;
 					}
 				}
+				if (room2Choice2 == "2" || room2Choice2 == "Equip Great Axe")
+				{
+					player.EquipItem(GreatAxe);
+					if (player.HasItemEquipped(GreatAxe) == true)
+					{
+						String AxeEquipped;
+						AxeEquipped.Append("You have Equipped the Axe!");
+						AxeEquipped.WriteToConsole();
+
+					}
+
+					
+
+				}
 
 			}
-			
+
 		}
 
 

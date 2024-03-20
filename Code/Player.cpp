@@ -62,3 +62,17 @@ bool Player::HasSpell(const String& spell) const
     return false;
 }
 
+void Player::EquipItem(Item& item)
+{
+    item.Equip();
+}
+
+void Player::UnEquipItem(Item& item)
+{
+    item.UnEquip();
+}
+
+bool Player::HasItemEquipped(const Item& item) const
+{
+    return item.IsEquipped();
+}

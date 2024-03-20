@@ -34,8 +34,8 @@ public:
     bool HasSpell(const String& spellName) const;
     bool FindSpell(const String& spell) const;
 
-    void EquipItem(const Item& item);
-    void UnEquipItem(const Item& item);
+    void EquipItem(Item& item);
+    void UnEquipItem(Item& item);
     bool HasItemEquipped(const Item& item) const;
 
 
@@ -47,7 +47,20 @@ private:
 
 };
 
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
