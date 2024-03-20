@@ -33,7 +33,20 @@ int DisplayString()
 }
 */
 
+void gameOver()
+{
+	system("CLS");
 
+	String gameOverStr;
+	String gameOverStr2;
+	gameOverStr.Append("You died.");
+	gameOverStr.WriteToConsole();
+	std::cout << "" << std::endl;
+	gameOverStr2.Append("Game Over.");
+	gameOverStr2.WriteToConsole();
+	
+	
+}
 
 
 
@@ -57,6 +70,12 @@ int main()
 	String beginStrOption1;
 	String beginStrOption2;
 	String choiceStr1;
+
+	String room2Str1;
+	String room2Str2;
+	String room2StrOption1;
+	String room2StrOption2;
+	String choiceStr2;
 
 
 
@@ -156,7 +175,39 @@ int main()
 			room2Str.WriteToConsole();
 			std::cout << "" << std::endl;
 
-			break;
+			
+			room2Str1.Append("A Monster has it's back to you, what will you do?");
+			room2Str1.WriteToConsole();
+			std::cout << "" << std::endl;
+
+			room2StrOption1.Append("1. Try Sneak around it to enter the next room");
+			room2StrOption1.WriteToConsole();
+			std::cout << "" << std::endl;
+			room2StrOption2.Append("2. Attack the monster");
+			room2StrOption2.WriteToConsole();
+			std::cout << "" << std::endl;
+
+
+			choiceStr2.ReadFromConsole();
+			if (choiceStr2 == "Sneak around" || choiceStr1 == "1")
+			{
+				
+				String DeathOutcome1;
+				DeathOutcome1.Append("The monster hears you walk, turns around and attacks you, you died unable to put up a fight.");
+				DeathOutcome1.WriteToConsole();
+
+				
+				gameOver();
+			
+				
+				break;
+				
+			}
+			else
+			{
+				std::cout << "Messed up again" << std::endl;
+			}
+			
 		}
 
 
