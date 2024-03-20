@@ -61,3 +61,4 @@ bool Player::HasSpell(const String& spell) const
     }
     return false;
 }
+
