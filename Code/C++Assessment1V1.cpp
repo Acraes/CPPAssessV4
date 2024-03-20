@@ -49,7 +49,16 @@ int main()
 	String inpCmd;
 	String nameStr1;
 	String nameStr2;
+
+
+
 	String beginStr1;
+	String beginStr2;
+	String beginStrOption1;
+	String beginStrOption2;
+	String choiceStr1;
+
+
 
 	String roomName1;
 	String roomName2;
@@ -110,9 +119,46 @@ int main()
 			std::cout << "" << std::endl;
 
 
+			beginStr2.Append("What will you do?");
+			beginStr2.WriteToConsole();
 
+			std::cout << "" << std::endl;
 
+			beginStrOption1.Append("1: Sit down, do nothing.");
+			beginStrOption1.WriteToConsole();
+			std::cout << "" << std::endl;
+			beginStrOption2.Append("2: Head out of the north room Exit.");
+			beginStrOption2.WriteToConsole();
+
+			choiceStr1.ReadFromConsole();
+			if (choiceStr1 == "North" || choiceStr1 == "2" || choiceStr1 == "Leave")
+			{
+					
+				Room* nextRoom = currentRoom->getExit("north");
+				if (nextRoom != nullptr)
+				{
+					currentRoom = nextRoom;
+					String LeftRoom1;
+					LeftRoom1.Append("You have left the first room.");
+					LeftRoom1.WriteToConsole();
+				}
+
+				else
+				{
+					std::cout << "Well, messed up." << std::endl;
+				}
+			}
 		}
+
+		if (currentRoom == room2)
+		{
+			String room2Str = room2->getDescription();
+			room2Str.WriteToConsole();
+			std::cout << "" << std::endl;
+
+			break;
+		}
+
 
 
 
