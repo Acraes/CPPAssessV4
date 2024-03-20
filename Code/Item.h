@@ -7,35 +7,16 @@ class Item
 
         Item();
 
-        Item(const String& _name, const String& _descript) : name(_name), descript(_descript), equipped(false)
-        {
+        Item(const String& _name, const String& _descript);
 
-        }
-
-        String GetName() const 
-        { 
-            return name;     
-        }
+        String GetName() const;
         
-        String GetDescription() const
-        {
-            return descript;
-        }
+        String GetDescription() const;
 
-        bool IsEquipped() const
-        {
-            return equipped;
-        }
-
-        void Equip()
-        {
-            equipped = true;
-        }
-
-        void UnEquip()
-        {
-            equipped = false;
-        }
+        bool IsEquipped() const;
+        void Equip();
+        void UnEquip();
+        
 
 
     private:

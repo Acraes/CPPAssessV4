@@ -443,6 +443,10 @@ bool String::operator>(const String& other) const
     return strcmp(data, other.data) > 0;
 }
 
+bool String::operator!=(const String& other) const
+{
+    return !(*this == other);
+}
 
 ///Previously had some code here from when i was working on this a while ago i think, during the period of time when it hadn't been covered and i was looking for how to do this. 
 /// (Didn't use ChatGPT or anything like that, just a bunch of code from different sources, with some things changed here and there).

@@ -2,17 +2,7 @@
 
 
 
-Item::Item() 
-{
-
-}
-
-Item::Item(const String& _name, const String& _descript) : name(_name), descript(_descript)
-{
-
-}
-
-Item::~Item()
+Item::Item(const String& _name, const String& _descript) : name(_name), descript(_descript), equipped(false)
 {
 
 }
@@ -25,4 +15,19 @@ String Item::GetName() const
 String Item::GetDescription() const
 {
     return descript;
+}
+
+bool Item::IsEquipped() const
+{
+    return equipped;
+}
+
+void Item::Equip()
+{
+    equipped = true;
+}
+
+void Item::UnEquip()
+{
+    equipped = false;
 }
