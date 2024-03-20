@@ -53,6 +53,9 @@ void gameOver()
 //Just main 
 int main()
 {
+	Player player;
+
+
 
 	String str1;
 	String str2;
@@ -65,6 +68,7 @@ int main()
 
 	String continueInput;
 	
+
 
 	String beginStr1;
 	String beginStr2;
@@ -237,9 +241,42 @@ int main()
 				break;
 				
 			}
-			else
+			if (choiceStr2 == "Attack" || choiceStr2 == "2")
 			{
-				std::cout << "Messed up again" << std::endl;
+				String strOutcome1;
+				strOutcome1.Append("You successfully surprise and kill the monster, it drops 2 items.");
+				strOutcome1.WriteToConsole();
+				std::cout << "" << std::endl;
+				std::cout << "" << std::endl;
+				String dropsStr;
+				dropsStr.Append("The monster dropped a Magic scroll with the spell 'Fireball' on it, and a great axe");
+				dropsStr.WriteToConsole();
+				std::cout << "" << std::endl;
+
+
+				String room2Out1Opt1;
+				String room2Out1Opt2;
+				room2Out1Opt1.Append("1. Learn the magic spell 'Fireball'");
+				room2Out1Opt1.WriteToConsole();
+				std::cout << "" << std::endl;
+				room2Out1Opt2.Append("2. Equip the Great axe.");
+				room2Out1Opt2.WriteToConsole();
+
+				String room2Choice2;
+				room2Choice2.ReadFromConsole();
+				if (room2Choice2 == "1" || room2Choice2 == "Learn Fireball")
+				{
+					player.LearnSpell("FireBall");
+					if (player.HasSpell("FireBall") == true)
+					{
+						std::cout << "It working lad" << std::endl;
+					}
+					else
+					{
+						std::cout << "Not working >:(" << std::endl;
+					}
+				}
+
 			}
 			
 		}
