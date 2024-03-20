@@ -63,7 +63,8 @@ int main()
 	String nameStr1;
 	String nameStr2;
 
-
+	String continueInput;
+	
 
 	String beginStr1;
 	String beginStr2;
@@ -167,6 +168,39 @@ int main()
 					std::cout << "Well, messed up." << std::endl;
 				}
 			}
+			if (choiceStr1 == "Sit down" || choiceStr1 == "1")
+			{
+				String DoingNothing;
+				DoingNothing.Append("You sit down doing nothing, Is this really the time?!");
+				DoingNothing.WriteToConsole();
+				std::cout << "" << std::endl;
+
+				String beginStr1Alternate;
+				beginStr1Alternate.Append("Now, Once again, What will you do?: ");
+				beginStr1Alternate.WriteToConsole();
+
+				String OnlyChoice1;
+				String onlyChoiceInput1;
+				OnlyChoice1.Append("1. Leave the room");
+				OnlyChoice1.WriteToConsole();
+
+				onlyChoiceInput1.ReadFromConsole();
+				if (onlyChoiceInput1 == "1" || onlyChoiceInput1 == "Leave the room")
+				{
+					Room* nextRoom = currentRoom->getExit("north");
+					if (nextRoom != nullptr)
+					{
+						currentRoom = nextRoom;
+						String LeftRoom1;
+						LeftRoom1.Append("You have left the first room.");
+						LeftRoom1.WriteToConsole();
+					}
+				}
+				else
+				{
+					std::cout << "God Damnit" << std::endl;
+				}
+			}
 		}
 
 		if (currentRoom == room2)
@@ -189,14 +223,14 @@ int main()
 
 
 			choiceStr2.ReadFromConsole();
-			if (choiceStr2 == "Sneak around" || choiceStr1 == "1")
+			if (choiceStr2 == "Sneak around" || choiceStr2 == "1")
 			{
 				
 				String DeathOutcome1;
+
 				DeathOutcome1.Append("The monster hears you walk, turns around and attacks you, you died unable to put up a fight.");
 				DeathOutcome1.WriteToConsole();
-
-				
+				continueInput.ReadFromConsole();
 				gameOver();
 			
 				
