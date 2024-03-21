@@ -5,7 +5,7 @@
 #include "String.h"
 #include "Player.h"
 #include "Room.h"
-
+#include "Spell.h"
 
 ///Took a while to figure out how to get the current time to be displayed,  purely for presentation in the Text file, got this from the internet.
 
@@ -35,7 +35,7 @@ int DisplayString()
 
 void gameOver()
 {
-	
+	system("CLS");
 
 	String gameOverStr;
 	String gameOverStr2;
@@ -55,6 +55,19 @@ int main()
 {
 	Player player;
 	Item GreatAxe("Great Axe", "A big axe");
+
+	Spell FireBall("FireBall", "Send out a ball of fire.");
+
+	/*FireBall.Learn();
+
+	if (FireBall.IsLearned())
+	{
+		std::cout << "Oh damn this works?" << std::endl;
+	}
+	else
+		{
+		std::cout << "Didn't work >:(" << std::endl;
+		}*/
 
 
 	String str1;
@@ -236,7 +249,6 @@ int main()
 				DeathOutcome1.Append("The monster hears you walk, turns around and attacks you, you died unable to put up a fight.");
 				DeathOutcome1.WriteToConsole();
 				continueInput.ReadFromConsole();
-				system("CLS");
 				gameOver();
 
 
@@ -268,15 +280,19 @@ int main()
 				room2Choice2.ReadFromConsole();
 				if (room2Choice2 == "1" || room2Choice2 == "Learn Fireball")
 				{
-					player.LearnSpell("FireBall");
-					if (player.HasSpell("FireBall") == true)
+					FireBall.Learn();
+					if (FireBall.IsLearned())
 					{
-						std::cout << "It working lad" << std::endl;
+						String LearntSpell;
+						LearntSpell.Append("You learnt the spell 'FireBall'");
+						LearntSpell.WriteToConsole();
+						std::cout << "" << std::endl;
 					}
-					else
+					if (!FireBall.IsLearned())
 					{
 						std::cout << "Not working >:(" << std::endl;
 					}
+					
 				}
 				if (room2Choice2 == "2" || room2Choice2 == "Equip Great Axe")
 				{
@@ -426,7 +442,6 @@ int main()
 						Victory1.Append("You attack and kill the minotaur in a single swift attack, the minotaur unable to defend itself.");
 						Victory1.WriteToConsole();
 						std::cout << "" << std::endl;
-						system("CLS");
 						String Victory2;
 						Victory2.Append("Deciding that there wasn't anything left in the room you immediately enter the 4th room.");
 						Victory2.WriteToConsole();
@@ -435,7 +450,6 @@ int main()
 						Room* nextRoom = currentRoom->getExit("north");
 						if (nextRoom != nullptr)
 						{
-							
 							currentRoom = nextRoom;
 							String LeftRoom1;
 							LeftRoom1.Append("You have left the third room.");
@@ -447,9 +461,8 @@ int main()
 					}
 					if (BattleStr3 == "2" || BattleStr3 == "Do nothing")
 					{
-						system("CLS");
 						String Fail1;
-						Fail1.Append("Fool that you are, you decide to let the monster enter the room without any trouble, its physique allowing it to easily overpower you.");
+						Fail1.Append("Fool that you are, you decide to let the monster enter the room without any trouble, it's physique allowing it to easily overpower you.");
 						Fail1.WriteToConsole();
 						std::cout << "" << std::endl;
 
@@ -459,19 +472,10 @@ int main()
 					
 					
 				}
-				if (room3BranchStr3 == "2" || room3BranchStr3 == "Fight")
-				{
-					system("CLS");
-					String Fail2;
-					Fail2.Append("With overwhelming bravery, you decide to face the monster head on, sadly, its physique allowing it to easily overpower you.");
-					Fail2.WriteToConsole();
-					std::cout << "" << std::endl;
-					gameOver();
-				}
 
 
 			}
-			if (player.HasSpell("FireBall"))
+			if (FireBall.IsLearned())
 			{
 				String room3BranchStr1;
 				String room3BranchStr2;
@@ -488,7 +492,7 @@ int main()
 				room3BranchStr3.ReadFromConsole();
 				if (room3BranchStr3 == "1" || room3BranchStr1 == "Escape" || room3BranchStr3 == "Run")
 				{
-					
+
 					String LeftRoom3;
 					LeftRoom3.Append("You have left the Third room.");
 					LeftRoom3.WriteToConsole();
@@ -497,7 +501,7 @@ int main()
 					String BattleStr1;
 					String BattleStr2;
 					String BattleStr3;
-					
+
 					BattleStr1.Append("Deciding you can't face the minotaur in a fair battle, you escape to the previous room, with the Minotaur on your tail.");
 					BattleStr1.WriteToConsole();
 					std::cout << "" << std::endl;
@@ -524,7 +528,7 @@ int main()
 						Victory1.Append("You blast the minotaur into smoldering ash, successfully killing the beast.");
 						Victory1.WriteToConsole();
 						std::cout << "" << std::endl;
-						
+
 						String Victory2;
 						Victory2.Append("Deciding that there wasn't anything left in the room you immediately enter the 4th room.");
 						Victory2.WriteToConsole();
@@ -533,7 +537,7 @@ int main()
 						Room* nextRoom = currentRoom->getExit("north");
 						if (nextRoom != nullptr)
 						{
-							
+
 							currentRoom = nextRoom;
 							String LeftRoom1;
 							LeftRoom1.Append("You have left the third room.");
@@ -558,22 +562,11 @@ int main()
 						gameOver();
 						break;
 					}
-					
-					
+
+
 				}
-				if (room3BranchStr3 == "2" || room3BranchStr3 == "Fight")
-				{
-					system("CLS");
-					String Fail2;
-					Fail2.Append("With overwhelming bravery, you decide to face the monster head on, sadly, the incantation for 'FireBall' takes too long.");
-					Fail2.WriteToConsole();
-					std::cout << "" << std::endl;
-					String Fail3;
-					Fail3.Append("Its Physique allows it to easily overpower you.");
-					Fail3.WriteToConsole();
-					std::cout << "" << std::endl;
-					gameOver();
-				}
+
+
 			}
 
 
@@ -587,7 +580,6 @@ int main()
 
 		if (currentRoom == room4)
 		{
-			system("CLS");
 			String finStr = room4->getDescription();
 
 			finStr.WriteToConsole();
