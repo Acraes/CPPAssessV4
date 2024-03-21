@@ -35,7 +35,7 @@ int DisplayString()
 
 void gameOver()
 {
-	system("CLS");
+	
 
 	String gameOverStr;
 	String gameOverStr2;
@@ -236,6 +236,7 @@ int main()
 				DeathOutcome1.Append("The monster hears you walk, turns around and attacks you, you died unable to put up a fight.");
 				DeathOutcome1.WriteToConsole();
 				continueInput.ReadFromConsole();
+				system("CLS");
 				gameOver();
 
 
@@ -419,9 +420,159 @@ int main()
 					std::cout << "" << std::endl;
 
 					BattleStr3.ReadFromConsole();
+					if (BattleStr3 == "1" || BattleStr3 == "Attack")
+					{
+						String Victory1;
+						Victory1.Append("You attack and kill the minotaur in a single swift attack, the minotaur unable to defend itself.");
+						Victory1.WriteToConsole();
+						std::cout << "" << std::endl;
+						system("CLS");
+						String Victory2;
+						Victory2.Append("Deciding that there wasn't anything left in the room you immediately enter the 4th room.");
+						Victory2.WriteToConsole();
+						std::cout << "" << std::endl;
 
+						Room* nextRoom = currentRoom->getExit("north");
+						if (nextRoom != nullptr)
+						{
+							
+							currentRoom = nextRoom;
+							String LeftRoom1;
+							LeftRoom1.Append("You have left the third room.");
+							LeftRoom1.WriteToConsole();
+							std::cout << "" << std::endl;
+						}
+
+
+					}
+					if (BattleStr3 == "2" || BattleStr3 == "Do nothing")
+					{
+						system("CLS");
+						String Fail1;
+						Fail1.Append("Fool that you are, you decide to let the monster enter the room without any trouble, its physique allowing it to easily overpower you.");
+						Fail1.WriteToConsole();
+						std::cout << "" << std::endl;
+
+						gameOver();
+						break;
+					}
 					
 					
+				}
+				if (room3BranchStr3 == "2" || room3BranchStr3 == "Fight")
+				{
+					system("CLS");
+					String Fail2;
+					Fail2.Append("With overwhelming bravery, you decide to face the monster head on, sadly, its physique allowing it to easily overpower you.");
+					Fail2.WriteToConsole();
+					std::cout << "" << std::endl;
+					gameOver();
+				}
+
+
+			}
+			if (player.HasSpell("FireBall"))
+			{
+				String room3BranchStr1;
+				String room3BranchStr2;
+				String room3BranchStr3;
+
+				room3BranchStr1.Append("1. Escape to the previous room.");
+				room3BranchStr1.WriteToConsole();
+				std::cout << "" << std::endl;
+
+				room3BranchStr2.Append("2. Fight the enemy.");
+				room3BranchStr2.WriteToConsole();
+				std::cout << "" << std::endl;
+
+				room3BranchStr3.ReadFromConsole();
+				if (room3BranchStr3 == "1" || room3BranchStr1 == "Escape" || room3BranchStr3 == "Run")
+				{
+					
+					String LeftRoom3;
+					LeftRoom3.Append("You have left the Third room.");
+					LeftRoom3.WriteToConsole();
+					std::cout << "" << std::endl;
+
+					String BattleStr1;
+					String BattleStr2;
+					String BattleStr3;
+					
+					BattleStr1.Append("Deciding you can't face the minotaur in a fair battle, you escape to the previous room, with the Minotaur on your tail.");
+					BattleStr1.WriteToConsole();
+					std::cout << "" << std::endl;
+
+					BattleStr2.Append("The minotaur, with its large physique, has difficulty entering the second room, awkwardly trying to shuffle through. What will you do?");
+					BattleStr2.WriteToConsole();
+					std::cout << "" << std::endl;
+					String BattleStrOption1;
+					String BattleStrOption2;
+
+					BattleStrOption1.Append("1. Attack the minotaur with the spell 'FireBall'.");
+					BattleStrOption1.WriteToConsole();
+					std::cout << "" << std::endl;
+
+					BattleStrOption2.Append("2. Let it enter the room safely.");
+					BattleStrOption2.WriteToConsole();
+					std::cout << "" << std::endl;
+
+					BattleStr3.ReadFromConsole();
+					if (BattleStr3 == "1" || BattleStr3 == "Attack")
+					{
+						system("CLS");
+						String Victory1;
+						Victory1.Append("You blast the minotaur into smoldering ash, successfully killing the beast.");
+						Victory1.WriteToConsole();
+						std::cout << "" << std::endl;
+						
+						String Victory2;
+						Victory2.Append("Deciding that there wasn't anything left in the room you immediately enter the 4th room.");
+						Victory2.WriteToConsole();
+						std::cout << "" << std::endl;
+
+						Room* nextRoom = currentRoom->getExit("north");
+						if (nextRoom != nullptr)
+						{
+							
+							currentRoom = nextRoom;
+							String LeftRoom1;
+							LeftRoom1.Append("You have left the third room.");
+							LeftRoom1.WriteToConsole();
+							std::cout << "" << std::endl;
+						}
+
+
+					}
+					if (BattleStr3 == "2" || BattleStr3 == "Do nothing")
+					{
+						system("CLS");
+						String Fail1;
+						Fail1.Append("Fool that you are, you decide to let the monster enter the room without any trouble, the casting of 'FireBall taking far too long.");
+						Fail1.WriteToConsole();
+						std::cout << "" << std::endl;
+						String Fail2;
+						Fail2.Append("Its physique easily allowing it to overpower you.");
+						Fail2.WriteToConsole();
+						std::cout << "" << std::endl;
+
+						gameOver();
+						break;
+					}
+					
+					
+				}
+				if (room3BranchStr3 == "2" || room3BranchStr3 == "Fight")
+				{
+					system("CLS");
+					String Fail2;
+					Fail2.Append("With overwhelming bravery, you decide to face the monster head on, sadly, the incantation for 'FireBall' takes too long.");
+					Fail2.WriteToConsole();
+					std::cout << "" << std::endl;
+					String Fail3;
+					Fail3.Append("Its Physique allows it to easily overpower you.");
+					Fail3.WriteToConsole();
+					std::cout << "" << std::endl;
+					gameOver();
 				}
 			}
 
@@ -436,6 +587,7 @@ int main()
 
 		if (currentRoom == room4)
 		{
+			system("CLS");
 			String finStr = room4->getDescription();
 
 			finStr.WriteToConsole();
