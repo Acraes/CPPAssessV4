@@ -2,19 +2,19 @@
 #include "String.h"
 #include "Item.h"
 
-class Spell
-{
-public:
-    Spell(const String& _name) : name(_name)
-    {
+// class Spell
+// {
+// public:
+//     Spell(const String& _name) : name(_name)
+//     {
 
-    }
+//     }
 
-private:
-    String name;
+// private:
+//     String name;
 
 
-};
+// };
 
 
 
