@@ -95,25 +95,22 @@ int main()
 	roomName1.Prepend("First room");
 	roomName2.Prepend("Second room");
 	roomName3.Prepend("Third room");
-	roomName4.Prepend("Fourth room");
-	roomName5.Prepend("Fifth room");
+	roomName4.Prepend("Exit room");
 
 	Room* room1 = new Room(roomName1, "Room Description: Starting Room, there isn't anything in the room.");
 	Room* room2 = new Room(roomName2, "Room Description: Enemy Room, there is an enemy infront of you.");
-	Room* room3 = new Room(roomName3, "Room Description: Reward Room, there is a scroll with the instructions on a spell.");
-	Room* room4 = new Room(roomName4, "Room Description: Enemy Room, Another enemy is infront of you.");
-	Room* room5 = new Room(roomName5, "Room Description: You've just left the dungeon! Congrats!");
+	Room* room3 = new Room(roomName3, "Room Description: Enemy Room, Another enemy is infront of you.");
+	Room* room4 = new Room(roomName4, "Room Description: You've just left the dungeon! Congrats!");
 
 
 
 	room1->addExit("north", room2);
 	room2->addExit("north", room3);
 	room3->addExit("north", room4);
-	room4->addExit("north", room5);
 
 	room2->addExit("south", room1);
 	room3->addExit("south", room2);
-	room4->addExit("south", room3);
+
 
 
 	Room* currentRoom = room1;
@@ -198,6 +195,11 @@ int main()
 						String LeftRoom1;
 						LeftRoom1.Append("You have left the first room.");
 						LeftRoom1.WriteToConsole();
+						
+						String doorCloseStr;
+						doorCloseStr.Append("The moment you enter the second room, the door closes behind you.");
+						doorCloseStr.WriteToConsole();
+						std::cout << "" << std::endl;
 					}
 				}
 				else
@@ -291,8 +293,72 @@ int main()
 
 				}
 
+				String Room2MoveStr1;
+				Room2MoveStr1.Append("What will you do?");
+				Room2MoveStr1.WriteToConsole();
+				std::cout << "" << std::endl;
+
+				String room2MoveStr1Option1;
+				room2MoveStr1Option1.Append("1. Head back to the previous empty room.");
+				room2MoveStr1Option1.WriteToConsole();
+				std::cout << "" << std::endl;
+
+				String room2MoveStr1Option2;
+				room2MoveStr1Option2.Append("2. Head into the next room.");
+				room2MoveStr1Option2.WriteToConsole();
+				std::cout << "" << std::endl;
+
+				String room2MoveStrInput1;
+				room2MoveStrInput1.ReadFromConsole();
+				if (room2MoveStrInput1 == "1" || room2MoveStrInput1 == "Head back")
+				{
+					String FailureStr1;
+					FailureStr1.Append("You can't head back, the door is bolted shut.");
+					FailureStr1.WriteToConsole();
+					std::cout << "" << std::endl;
+
+					String room2MoveStr2Option2;
+					room2MoveStr2Option2.Append("1. Head into the next room.");
+					room2MoveStr2Option2.WriteToConsole();
+
+					String room2MoveStrInput2;
+					room2MoveStrInput2.ReadFromConsole();
+
+					if (room2MoveStrInput2 == "1" || room2MoveStrInput2 == "Move to next room")
+					{
+						Room* nextRoom = currentRoom->getExit("north");
+						if (nextRoom != nullptr)
+						{
+							currentRoom = nextRoom;
+							String LeftRoom1;
+							LeftRoom1.Append("You have left the second room.");
+							LeftRoom1.WriteToConsole();
+							std::cout << "" << std::endl;
+						}
+					}
+				}
+
+				if (room2MoveStrInput1 == "2" || room2MoveStrInput1 == "Move to next room")
+				{
+					Room* nextRoom = currentRoom->getExit("north");
+					if (nextRoom != nullptr)
+					{
+					currentRoom = nextRoom;
+					String LeftRoom1;
+					LeftRoom1.Append("You have left the second room.");
+					LeftRoom1.WriteToConsole();
+					std::cout << "" << std::endl;
+					}
+				}
+
+
 			}
 
+		}
+
+		if (currentRoom == room3)
+		{
+			
 		}
 
 
@@ -301,9 +367,9 @@ int main()
 
 
 
-		if (currentRoom == room5)
+		if (currentRoom == room4)
 		{
-			String finStr = room5->getDescription();
+			String finStr = room4->getDescription();
 
 			finStr.WriteToConsole();
 			break;
@@ -498,7 +564,7 @@ int main()
 	delete room2;
 	delete room3;
 	delete room4;
-	delete room5;
+
 
 
 
