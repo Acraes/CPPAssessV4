@@ -358,7 +358,44 @@ int main()
 
 		if (currentRoom == room3)
 		{
-			
+			std::cout << "" << std::endl;
+			String doorDoesntClose;
+			doorDoesntClose.Append("The door noticeably doesn't close behind you.");
+			doorDoesntClose.WriteToConsole();
+			std::cout << "" << std::endl;
+
+			String room3Str1;
+			room3Str1.Append("A large minotaur stands infront of you, it has noticed you and grips its great sword. You can't catch it by surprise.");
+			room3Str1.WriteToConsole();
+			std::cout << "" << std::endl;
+
+			String room3Str2;
+			room3Str2.Append("What will you do?");
+			room3Str2.WriteToConsole();
+			std::cout << "" << std::endl;
+
+			if (player.HasItemEquipped(GreatAxe))
+			{
+				String room3BranchStr1;
+				String room3BranchStr2;
+				String room3BranchStr3;
+
+				room3BranchStr1.Append("1. Escape to the previous room.");
+				room3BranchStr1.WriteToConsole();
+				std::cout << "" << std::endl;
+
+				room3BranchStr2.Append("2. Fight the enemy.");
+				room3BranchStr2.WriteToConsole();
+				std::cout << "" << std::endl;
+
+				room3BranchStr3.ReadFromConsole();
+				if (room3BranchStr3 == "1" || room3BranchStr1 == "Escape" || room3BranchStr3 == "Run")
+				{
+					
+				}
+			}
+
+
 		}
 
 
