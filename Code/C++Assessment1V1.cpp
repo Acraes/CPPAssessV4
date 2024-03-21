@@ -108,8 +108,7 @@ int main()
 	room2->addExit("north", room3);
 	room3->addExit("north", room4);
 
-	room2->addExit("south", room1);
-	room3->addExit("south", room2);
+	
 
 
 
@@ -391,6 +390,37 @@ int main()
 				room3BranchStr3.ReadFromConsole();
 				if (room3BranchStr3 == "1" || room3BranchStr1 == "Escape" || room3BranchStr3 == "Run")
 				{
+					
+					String LeftRoom3;
+					LeftRoom3.Append("You have left the Third room.");
+					LeftRoom3.WriteToConsole();
+					std::cout << "" << std::endl;
+
+					String BattleStr1;
+					String BattleStr2;
+					String BattleStr3;
+					
+					BattleStr1.Append("Deciding you can't face the minotaur in a fair battle, you escape to the previous room, with the Minotaur on your tail.");
+					BattleStr1.WriteToConsole();
+					std::cout << "" << std::endl;
+
+					BattleStr2.Append("The minotaur, with its large physique, has difficulty entering the second room, awkwardly trying to shuffle through. What will you do?");
+					BattleStr2.WriteToConsole();
+					std::cout << "" << std::endl;
+					String BattleStrOption1;
+					String BattleStrOption2;
+
+					BattleStrOption1.Append("1. Attack the minotaur while it is distracted with your Great Axe");
+					BattleStrOption1.WriteToConsole();
+					std::cout << "" << std::endl;
+
+					BattleStrOption2.Append("2. Let it enter the room safely.");
+					BattleStrOption2.WriteToConsole();
+					std::cout << "" << std::endl;
+
+					BattleStr3.ReadFromConsole();
+
+					
 					
 				}
 			}
